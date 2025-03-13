@@ -1,7 +1,7 @@
 import sys
 
-# 도서 정보를 저장할 딕셔너리 생성
-library = {}
+# 도서 정보를 저장할 딕셔너리 생성 {책: [저자, 분류, 대출가능여부]}
+library = { '노인과 바다' : ['헤밍웨이','인문',True], '이기적 유전자' : ['리처드 도킨스','과학',True], '파이썬' : ['박응용','기술',True], '깃허브' : ['박응용', '기술', True]}
 
 # 카테고리 목록 (도서 카테고리로 '인문', '과학', '예술', '기술'을 사용)
 categories = ['인문', '과학', '예술', '기술']
@@ -30,9 +30,9 @@ while True:
         search_choice = input("검색 기준을 선택하세요 (1 또는 2): ")
 
         if search_choice == '1':  # 제목으로 검색
-            title = input("찾을 도서 제목을 입력하세요: ")
+            title_1 = input("찾을 도서 제목을 입력하세요: ")
             # 도서 제목이 정확히 일치하는 도서를 찾음 (대소문자 구분하지 않음)
-            found_books = [title for title in library if title.lower() == title.lower()]
+            found_books = [title for title in library if title.lower() == title_1.lower()]
             if found_books:
                 for title in found_books:
                     author, category, available = library[title]
@@ -45,6 +45,7 @@ while True:
             author_name = input("찾을 저자 이름을 입력하세요: ")
             # 저자 이름이 포함된 도서 제목을 찾음 (대소문자 구분하지 않음)
             found_books = [title for title, (author, _, _) in library.items() if author_name.lower() in author.lower()]
+            #리스트 컴프리헨션 사용
             if found_books:
                 for title in found_books:
                     author, category, available = library[title]
@@ -133,5 +134,6 @@ while True:
 
     else:
         print("잘못된 선택입니다. 다시 입력하세요.")
+        
 
 
