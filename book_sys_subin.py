@@ -37,7 +37,7 @@ while True:
                 for title in found_books:
                     author, category, available = library[title]
                     status = "Available" if available else "Checked Out"
-                    print(f"제목: {title}, 저자: {author}, 카테고리: {category}, 상태: {status}")
+                    print(f"제목: {title}, 저자: {author}, 카테고리: {category}, 상태: {status}") #그냥 다 목록이 나오는데?
             else:
                 print("해당 제목을 가진 도서를 찾을 수 없습니다.")
         
@@ -121,11 +121,11 @@ while True:
     # 도서 목록 출력
     elif choice == '7':
         if not library:
-            print("등록된 도서가 없습니다.")  # 도서 목록이 비어있으면 메시지 출력
+            print("등록된 도서가 없습니다.")
         else:
-            print("\n==== 도서 목록 ====")
-            # 헤더 출력 (각 항목의 제목을 출력)
-            print(f"{'번호':<5} {'제목':<30} {'저자':<20} {'카테고리':<10} {'상태':<15}")
+            for title, (author, category, available) in library.items():
+                status = "Available" if available else "Checked Out"
+                print(f"제목: '{title}', 저자: {author}, 카테고리: {category}, 상태: {status}")
 
     elif choice == '8':  # 종료
         print("프로그램을 종료합니다.")
@@ -133,3 +133,5 @@ while True:
 
     else:
         print("잘못된 선택입니다. 다시 입력하세요.")
+
+
