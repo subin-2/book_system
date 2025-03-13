@@ -1,7 +1,11 @@
 import sys
 
 # 도서 정보를 저장할 딕셔너리 생성 {책: [저자, 분류, 대출가능여부]}
-library = { '노인과 바다' : ['헤밍웨이','인문',True], '이기적 유전자' : ['리처드 도킨스','과학',True], '파이썬' : ['박응용','기술',True], '깃허브' : ['박응용', '기술', True]}
+library = { '노인과 바다' : ['헤밍웨이','인문',True], 
+           '이기적 유전자' : ['리처드 도킨스','과학',True], 
+           '파이썬' : ['박응용','기술',True], 
+           '깃허브' : ['박응용', '기술', True], 
+           '자바' : ['박응용','기술',True]}
 
 # 카테고리 목록 (도서 카테고리로 '인문', '과학', '예술', '기술'을 사용)
 categories = ['인문', '과학', '예술', '기술']
@@ -58,6 +62,7 @@ while True:
     
     # 도서 추가
     elif choice == '1':
+        print("\n==== 도서 추가 ====")
         title = input("도서 제목을 입력하세요: ")
         author = input("저자를 입력하세요: ")
         category = input("카테고리를 입력하세요 (인문/과학/예술/기술): ")
@@ -72,6 +77,7 @@ while True:
 
     # 도서 삭제
     elif choice == '3':
+        print("\n==== 도서 삭제 ====")
         title = input("삭제할 도서 제목을 입력하세요: ")
         if title in library:
             del library[title]  # 해당 도서를 삭제
@@ -81,6 +87,7 @@ while True:
 
     # 도서 수정
     elif choice == '4':
+        print("\n==== 도서 수정 ====")
         title = input("수정할 도서 제목을 입력하세요: ")
         if title in library:
             new_author = input("새 저자를 입력하세요: ")
@@ -97,6 +104,7 @@ while True:
 
     # 도서 대출
     elif choice == '5':
+        print("\n==== 도서 대출 ====")
         title = input("대출할 도서 제목을 입력하세요: ")
         if title in library:
             if library[title][2]:  # 도서가 대출 가능하면
@@ -109,6 +117,7 @@ while True:
 
     # 도서 반납
     elif choice == '6':
+        print("\n==== 도서 반납 ====")
         title = input("반납할 도서 제목을 입력하세요: ")
         if title in library:
             if not library[title][2]:  # 도서가 대출 중이면
@@ -121,12 +130,13 @@ while True:
 
     # 도서 목록 출력
     elif choice == '7':
+        print("\n==== 도서 목록 출력 ====")
         if not library:
             print("등록된 도서가 없습니다.")
         else:
             for title, (author, category, available) in library.items():
                 status = "Available" if available else "Checked Out"
-                print(f"제목: '{title}', 저자: {author}, 카테고리: {category}, 상태: {status}")
+                print(f"\n제목: '{title}', 저자: {author}, 카테고리: {category}, 상태: {status}")
 
     elif choice == '8':  # 종료
         print("프로그램을 종료합니다.")
