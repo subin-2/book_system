@@ -1,3 +1,4 @@
+import json
 
 def book_search(library):
     print("\n==== 도서 찾기 ====")
@@ -31,7 +32,6 @@ def book_search(library):
             print("해당 저자의 도서를 찾을 수 없습니다.")
     else:
         print("잘못된 선택입니다. 다시 시도해주세요.")
-
 
 def book_input(library, categories):
     print("\n==== 도서 추가 ====")
@@ -72,7 +72,6 @@ def book_update(library, categories):
     else:
         print("해당 도서를 찾을 수 없습니다.")  # 도서가 없으면 오류 메시지 출력
 
-
 def book_borrow(library):
     print("\n==== 도서 대출 ====")
     title = input("대출할 도서 제목을 입력하세요: ")
@@ -105,6 +104,17 @@ def book_list(library):
         for title, (author, category, available) in library.items():
             status = "Available" if available else "Checked Out"
             print(f"\n제목: '{title}', 저자: {author}, 카테고리: {category}, 상태: {status}")
+
+
+
+
+def book_save(library,filename):
+  with open(filename,'w') as f:
+    json.dump(library,f,indent=2,ensure_ascii=False)
+
+def book_load(filename):
+  with open(filename,'r') as f:
+    return json.load(f)
 
 
 

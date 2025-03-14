@@ -2,11 +2,11 @@ import sys
 import book_func as bf
 
 # 도서 정보를 저장할 딕셔너리 생성 {책: [저자, 분류, 대출가능여부]}
-library = { '노인과 바다' : ['헤밍웨이','인문',True], 
-           '이기적 유전자' : ['리처드 도킨스','과학',True], 
-           '파이썬' : ['박응용','기술',True], 
-           '깃허브' : ['박응용', '기술', True], 
-           '자바' : ['박응용','기술',True]}
+# library = { 'apple' : ['헤밍웨이','인문',True], 
+#            '이기적 유전자' : ['리처드 도킨스','과학',True], }
+
+filename = 'book_sys.json'
+library = bf.book_load(filename)
 
 # 카테고리 목록 (도서 카테고리로 '인문', '과학', '예술', '기술'을 사용)
 categories = ['인문', '과학', '예술', '기술']
@@ -57,6 +57,7 @@ while True:
 
     elif choice == '8':  # 종료
         print("프로그램을 종료합니다.")
+        bf.book_save(library,filename)
         break
 
     else:
